@@ -1,9 +1,0 @@
-{
-  "development": {
-    "username": "admin",
-    "password": "mnd0uet0ztv6mdu-HJG",
-    "database": "Blog",
-    "host": "blog.ccthuks2kzwa.us-east-1.rds.amazonaws.com",
-    "dialect": "mariadb"
-  }
-}
