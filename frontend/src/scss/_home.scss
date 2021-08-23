@@ -1,0 +1,87 @@
+.posts {
+  padding-bottom: 15px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #c1c1c1;
+  border-style: dashed;
+}
+
+.post-image {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.post-details {
+  max-width: 85%;
+  margin: 0 auto;
+}
+
+.post-title {
+  letter-spacing: .8px;
+  font-size: 23px;
+  font-weight: bold;
+}
+
+.post-paragraph {
+  color: $text;
+  font-size: 16px;
+  line-height: 2
+}
+
+.post-info {
+  display: flex;
+  align-items: center;
+  margin: 15px 0;
+  color: $text;
+}
+
+.post-date {
+  margin-right: 10px;
+}
+
+.post-author {
+  display: flex;
+  align-items: center;
+}
+
+.post-author-image {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.post-actions {
+  margin: 15px 0;
+  display: flex;
+  align-items: center;
+}
+
+.post-read-button {
+  font-family: '';
+  height: 38px;
+  padding: 0 30px;
+  line-height: 24px;
+  border-radius: 30px;
+  border: 1px solid #f47e00;
+  color: $textDark;
+  transition: all 0.1s ease-in;
+  background-color: #fff;
+}
+
+.post-read-button:hover {
+  color: $text;
+  background-color: #f47e00;
+}
+
+.share-action {
+  display: flex;
+}
+
+.share-icon, .share-all-actions i {
+  font-size: 30px;
+  margin: 10px 5px;
+  &:hover {
+    opacity: 0.7;
+  }
+}

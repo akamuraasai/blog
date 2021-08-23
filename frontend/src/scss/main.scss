@@ -1,8 +1,47 @@
 /* responsivo e reset*/
-@import 'responsive';
 @import 'reset';
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap');
 @import 'mixins';
+@import 'variables';
+@import 'responsive';
+@import 'header';
+@import 'footer';
+@import 'home';
+@import 'login';
+@import '404';
 
-.main {
+body * {
+  font-family: 'Lora', serif;
+}
 
+body {
+  background-color: $darkBackground;
+  color: #fff
+}
+
+.container {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+
+  @include breakpoint(xs) {
+    width: 100%;
+  }
+
+  @include breakpoint(sm) {
+    width: 540px;
+  }
+
+  @include breakpoint(md) {
+    width: 750px;
+  }
+
+  @include breakpoint(lg) {
+    width: 910px;
+  }
+
+  // @include breakpoint(xl) {
+  //   width: 1140px;
+  // }
 }

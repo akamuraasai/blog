@@ -6,27 +6,75 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./dist/css/main.min.css">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
   <title>Blog</title>
 </head>
 
 <body>
-  <main class="main">
-    <header>
-      <nav>
-        <ul>
-          <li><a href="">Home</a></li>
-          <li><a href="">Posts</a></li>
-          <li><a href="">About me</a></li>
-          <li><a href="">Contact Me</a></li>
-          <li><a href="">Purchase!</a></li>
-        </ul>
-      </nav>
+  <header class="header">
+    <nav class="container nav-header">
+      <ul>
+        <li><a href="./src/pages/login.html">Login</a></li>
+        <li><a href="./src/pages/registrar.html">Cadastrar-se</a></li>
+      </ul>
+    </nav>
+  </header>
 
-      <div>
-        <i ><a href=""></a></i>
+  <main class="container">
+    <article class="posts">
+      <img class="post-image" src="https://awcdn1.ahmad.works/writing/wp-content/uploads/2015/05/cheerful-loving-couple-bakers-drinking-coffee-PCAVA6B-2-880x400.jpg" alt="">
+
+      <div class="post-details">
+        <h1 class="post-title">Cheerful Loving Couple Bakers Drinking Coffee</h1>
+        <div class="post-info" >
+          <div class='post-date'>May 17, 2015</div>
+          <div class="post-author">
+            <img class="post-author-image" src="https://awcdn1.ahmad.works/writing/wp-content/uploads/2019/10/Author-50x50.jpg" alt="John Doe">
+            <p>John Doe</p>
+          </div>
+        </div>
+
+        <p class="post-paragraph">It’s no secret that the digital industry is booming. From exciting startups to global brands, companies are reaching out to digital agencies, responding to the new possibilities available. However, the industry is fast becoming overcrowded, heaving with agencies offering similar services — on the surface, at least. Producing creative, fresh projects is the key to standing out. Unique side projects are the best place to innovate, but balancing commercially and creatively lucrative work is tricky. So, this article looks at …</p>
+
+        <div class="post-actions">
+          <button class="post-read-button" >Continue lendo</button>
+          <div class=share-action>
+            <span class=share-icon>
+              <i class="fas fa-share"></i>
+            </span>
+
+            <div class=share-all-actions>
+              <a href="">
+                <i class="fab fa-facebook-square"></i>
+              </a>
+              <a href="">
+                <i class="fab fa-twitter-square"></i>
+              </a>
+
+              <a href="">
+                <i class="fab fa-google-plus-square"></i>
+              </a>
+
+              <a href="">
+                <i class="fab fa-linkedin"></i>
+              </a>
+
+              <a href="">
+                <i class="fab fa-pinterest-square"></i>
+              </a>
+
+            </div>
+          </div>
+        </div>
+
       </div>
-    </header>
+    </article>
   </main>
+
+  <footer class="footer">
+    <p>© 2021, INC. All Rights Reserved.</p>
+  </footer>
 
 </body>
 
