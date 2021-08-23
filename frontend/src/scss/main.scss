@@ -2,7 +2,41 @@
 @import 'responsive';
 @import 'reset';
 @import 'mixins';
+@import 'details';
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap');
 
-.main {
-
+body, html * {
+  
+  font-family: 'Lora', serif;
+  
 }
+
+.container {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+
+  
+    @include breakpoint(xs) {
+      width: 100%;
+    }
+  
+    @include breakpoint(sm) {
+      width: 540px;
+    }
+  
+    @include breakpoint(md) {
+      width: 750px;
+    }
+  
+    @include breakpoint(lg) {
+      width: 910px;
+    }
+  
+    // @include breakpoint(xl) {
+    //   width: 1140px;
+    // }
+  }
+  
+  
