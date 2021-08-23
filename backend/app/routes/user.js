@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const argon2 = require('argon2-ffi').argon2i;
 const { User } = require('../models');
 
 module.exports = (app) => {
@@ -32,13 +33,21 @@ module.exports = (app) => {
       return res.status(400).send('failed to login');
     }
 
-    const user = await User.scope('withoutPassword').findOne({ where: { email, password } });
+    const user = await User.findOne({ where: { email } });
     if (!user) {
       return res.status(400).send('failed to login');
     }
 
-    const token = jwt.sign(user.dataValues, process.env.SECRET, { algorithm: 'HS256'});
-    return res.send({ user, token });
+    const passwordBuffer = new Buffer.from(password);
+    const hash = user.dataValues.password;
+    const correctPass = await argon2.verify(hash, passwordBuffer);
+
+    if (!correctPass) {
+      return res.status(400).send('failed to login');
+    }
+
+    const token = jwt.sign({ ...user.dataValues, password: undefined }, process.env.SECRET, { algorithm: 'HS256'});
+    return res.send({ user: { ...user.dataValues, password: undefined }, token });
   });
 
   app.get('/users', async (req, res) => {
