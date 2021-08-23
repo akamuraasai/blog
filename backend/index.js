@@ -1,5 +1,6 @@
 const express = require('express');
 const userRoutes = require('./app/routes/user');
+const postRoutes = require('./app/routes/post');
 
 const app = express();
 const PORT = 3000;
@@ -12,5 +13,6 @@ app.get('/', async (req, res) => {
 });
 
 userRoutes(app);
+postRoutes(app);
 
 app.listen(PORT);
