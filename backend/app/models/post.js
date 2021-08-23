@@ -6,6 +6,9 @@ module.exports = (sequelize, DataTypes) => {
     post: DataTypes.STRING,
     banner: DataTypes.STRING,
     title: DataTypes.STRING,
+  }, {
+    timestamps: true,
+    paranoid: true,
   });
 
   return Post;
