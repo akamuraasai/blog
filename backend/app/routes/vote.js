@@ -10,27 +10,19 @@ module.exports = (app) => {
   }); //Listar todos
 
   app.post('/votes', async (req, res) => {
-      const { type_id, user_id, post_id } = req.body;
+      const { type_id, post_id } = req.body;
+      const { id: user_id } = req.decoded;
 
-      if (!type_id || typeof type_id !== 'number' || type_id === 0) {
-        return res.status(400).send('field "type_id" was not present');
-      }
         try {
+
+            if (!type_id || typeof type_id !== 'number' || type_id === 0) {
+                return res.status(400).send('field "type_id" was not present');
+            }
     
             const typeId = await VoteType.findOne({ where: { id: type_id } } )
 
             if(!typeId){
                 return res.status(400).send('field "type_id" was not exists');
-            }
-
-            if (!user_id || typeof user_id !== 'number' || user_id === 0) {
-                return res.status(400).send('field "user_id" was not exists');
-            }
-
-            const userId = await User.findOne({ where: { id: user_id } } )
-
-            if(!userId){
-                return res.status(400).send('field "user_id" was not exists');
             }
 
             if (!post_id || typeof post_id !== 'number' || post_id === 0) {
@@ -53,7 +45,8 @@ module.exports = (app) => {
 
   app.put('/votes/:id', async (req, res) => {
     const { id } = req.params;
-    const { type_id, user_id, post_id } = req.body;
+    const { type_id, post_id } = req.body;
+    const { id: user_id } = req.decoded;
 
     try {
         
@@ -66,12 +59,12 @@ module.exports = (app) => {
             return res.status(404).send('not found');
         }
 
-        if (!type_id || !vote.dataValues.type_id || typeof type_id !== 'number' || type_id === 0) {
-            return res.status(400).send('field "type_id" was not valid');
+        if (vote.dataValues.user_id !== user_id) {
+            return res.status(403).send('unauthorized!');
         }
 
-        if (!user_id || !vote.user_id || vote.user_id !== user_id || typeof user_id !== 'number' || user_id === 0) {
-            return res.status(400).send('field "user_id" was not valid');
+        if (!type_id || !vote.dataValues.type_id || typeof type_id !== 'number' || type_id === 0) {
+            return res.status(400).send('field "type_id" was not valid');
         }
 
         if (!post_id || !vote.post_id || vote.post_id !== post_id ||typeof post_id !== 'number' || post_id === 0) {
@@ -90,6 +83,7 @@ module.exports = (app) => {
 
   app.delete('/votes/:id', async (req, res) => {
     const { id } = req.params;
+    const { id: user_id } = req.decoded;
 
     if (!id || id === '' || id === 0) {
         return res.status(404).send('not found');
@@ -98,6 +92,10 @@ module.exports = (app) => {
 
     if (!vote) {
         return res.status(404).send('not found');
+    }
+
+    if (vote.dataValues.user_id !== user_id) {
+        return res.status(403).send('unauthorized!');
     }
 
     await vote.destroy();

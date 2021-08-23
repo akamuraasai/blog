@@ -17,7 +17,12 @@ module.exports = (app) => {
   }); //Buscar
 
   app.post('/posts', async (req, res) => {
-      const { user_id: userId, post: body, title, banner } = req.body;
+      const { post: body, title, banner } = req.body;
+      const { id: userId, role } = req.decoded;
+
+      if (role !== 'admin' && role !== 'editor') {
+        return res.status(403).send('unauthorized');
+      }
 
       if (!userId || typeof userId !== 'number' || userId === 0) {
         return res.status(400).send('field "user_id" was not present');
@@ -37,7 +42,8 @@ module.exports = (app) => {
 
   app.put('/posts/:id', async (req, res) => {
     const { id } = req.params;
-    const {  user_id: userId, post: body, title, banner } = req.body;
+    const { post: body, title, banner } = req.body;
+    const { id: userId, role } = req.decoded;
 
     if (!id || id === '' || id === 0) {
         return res.status(404).send('not found');
@@ -46,6 +52,10 @@ module.exports = (app) => {
 
     if (!post) {
         return res.status(404).send('not found');
+    }
+
+    if ((role === 'editor' && userId !== post.dataValues.user_id) || role === "user") {
+      return res.status(403).send('unauthorized');
     }
 
     if (userId || typeof userId === 'number' || userId > 0) {
@@ -70,6 +80,7 @@ module.exports = (app) => {
 
   app.delete('/posts/:id', async (req, res) => {
     const { id } = req.params;
+    const { id: userId, role } = req.decoded;
 
     if (!id || id === '' || id === 0) {
         return res.status(404).send('not found');
@@ -77,7 +88,11 @@ module.exports = (app) => {
     const post = await Post.findOne({ where: { id } });
 
     if (!post) {
-        return res.status(404).send('not found');
+      return res.status(404).send('not found');
+    }
+
+    if ((role === 'editor' && userId !== post.dataValues.user_id) || role === "user") {
+      return res.status(403).send('unauthorized');
     }
 
     await post.destroy();
