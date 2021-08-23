@@ -33,7 +33,6 @@ module.exports = (app) => {
 
       const post = await Post.create({ user_id: userId, post: body, title, banner });
       return res.json(post);
-
   }); // Criar
 
   app.put('/posts/:id', async (req, res) => {
@@ -61,7 +60,7 @@ module.exports = (app) => {
         post.title = title;
     }
 
-    if(banner || typeof banner === 'string' || banner.length > 0 ){
+    if(banner || typeof banner === 'string' || banner.length > 0) {
         post.banner = banner;
     }
 
