@@ -40,7 +40,8 @@ module.exports = (app) => {
 
         } catch (error) {
             console.log(error.message);
-        }      
+        } 
+        return res.status(400).send("Failed to create vote!");
   }); // Criar
 
   app.put('/votes/:id', async (req, res) => {
@@ -79,6 +80,7 @@ module.exports = (app) => {
     } catch (error) { 
         console.log(error.message);  
     }
+    return res.status(400).send("Failed to edit vote!");
   }); //Editar
 
   app.delete('/votes/:id', async (req, res) => {
