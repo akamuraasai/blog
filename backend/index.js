@@ -6,6 +6,7 @@ require('dotenv').config();
 const bearerMiddleware = require('./helpers/bearer');
 const userRoutes = require('./app/routes/user');
 const postRoutes = require('./app/routes/post');
+const voteRoutes = require('./app/routes/vote');
 
 const app = express();
 const PORT = process.env.PORT;
@@ -33,5 +34,6 @@ app.get('/', async (req, res) => {
 
 userRoutes(app);
 postRoutes(app);
+voteRoutes(app);
 
 app.listen(PORT);
