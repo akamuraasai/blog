@@ -19,7 +19,7 @@
       },
       {
         "resource": "users/*",
-        "methods": ["POST", "GET", "PUT"],
+        "methods": ["POST", "GET", "PUT", "DELETE"],
         "action": "deny"
       }
     ]
@@ -39,7 +39,7 @@
       },
       {
         "resource": "users/*",
-        "methods": ["POST", "GET", "PUT"],
+        "methods": ["POST", "GET", "PUT", "DELETE"],
         "action": "deny"
       }
     ]
