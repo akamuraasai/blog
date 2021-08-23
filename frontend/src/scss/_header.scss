@@ -1,0 +1,27 @@
+.header {
+  border-bottom: 1px solid #777777;
+  margin-bottom: 15px;
+}
+
+.nav-header {
+  margin: 15px 0;
+}
+
+.nav-header ul {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.nav-header ul li {
+  margin-left: 15px;
+}
+
+.nav-header ul li a {
+  text-decoration: none;
+  color: $text;
+  font-weight: bold;
+}
+
+.nav-header ul li a:hover {
+  color: #c1c1c1;
+}
